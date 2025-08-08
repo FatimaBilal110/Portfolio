@@ -9,9 +9,8 @@ export async function POST(request) {
     const body = await request.json();
     await client.connect();
     
-    const db = client.db(); // Uses the DB from the URI (portfolio)
-    const collection = db.collection('contacts'); // collection name
-
+    const db = client.db(); 
+    const collection = db.collection('contacts'); 
     await collection.insertOne({
       name: body.name,
       email: body.email,

@@ -5,8 +5,7 @@ const ServicesSection = () => {
   return (
    <section id="services" className="min-h-screen rounded-3xl bg-gray-700 text-white py-20 px-10">
   <div className="container mx-auto">
-    
-    {/* Centered Heading */}
+  
     <h2 className="text-4xl text-cyan-400 font-extrabold text-center">
       Services
     </h2>
@@ -30,7 +29,6 @@ const ServicesSection = () => {
         </p>
       </div>
 
-      {/* Card 2 */}
       <div className="w-[300px] bg-gray-600 hover:bg-gray-700 text-white rounded-xl shadow-lg p-6 border-4 border-gray-600 hover:border-pink-400">
         <h3 className="text-3xl text-center font-bold mb-2">Web Developing</h3>
            <div className="w-full h-9 bg-cyan-400 mb-4 flex justify-center items-center">
