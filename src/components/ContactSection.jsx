@@ -6,32 +6,31 @@ const ContactSection = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
     const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
 
-    formData.append("access_key", "24801916-8af4-4309-9465-aba3eef00f1d");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    const res = await fetch("https://api.web3forms.com/submit", {
+    const res = await fetch("/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
       },
-      body: json
-    }).then((res) => res.json());
+      body: JSON.stringify(data),
+    });
 
-    if (res.success) {
-      console.log("Success", res);
+    const result = await res.json();
+
+    if (result.success) {
       setSuccess(true);
       event.target.reset();
       setTimeout(() => setSuccess(false), 3000);
+    } else {
+      alert("Something went wrong. Please try again.");
+      console.error(result.error);
     }
   };
-
-  return (
-    <section id= "contact" className="flex justify-center items-center rounded-2xl min-h-screen bg-gray-600 p-6">
+   return (
+    <section id="contact" className="flex justify-center items-center rounded-2xl min-h-screen bg-gray-600 p-6">
       <form
         className="bg-white/30 rounded-2xl shadow-lg p-8 w-full max-w-md space-y-6"
         onSubmit={onSubmit}
@@ -96,4 +95,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default ContactSection; 
