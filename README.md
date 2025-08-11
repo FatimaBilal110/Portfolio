@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💼 Personal Portfolio
 
-## Getting Started
+A modern and responsive developer portfolio built with **Next.js** and **Tailwind CSS** — featuring a working **contact form** that stores messages in **MongoDB Atlas**.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- ⚡ Built with **Next.js App Router**
+- 🎨 Styled using **Tailwind CSS**
+- 📩 Fully functional **Contact Form**
+- 🌐 Messages are stored securely in **MongoDB Atlas**
+- 📱 Fully responsive design for all devices
+- 💡 Clean, minimal, and customizable
+
+---
+
+## 🛠️ Tech Stack
+
+- [Next.js]
+- [Tailwind CSS]
+- [MongoDB Atlas]
+
+---
+
+## 📂 Folder Structure
+
 ```
+portfolio/
+├── src/app/
+│   |    ├── api/
+│   |        └── contact/
+│   |               └── route.js 
+│   ├── layout.jsx             
+│   ├── page.jsx             
+│   |
+|   └── components/
+│          ├── ContactSection.jsx      
+│          ├── Navbar.jsx     
+│          ├── HeroSection.jsx        
+│          ├── SkillsSection.jsx           
+│          ├── ServicesSection.jsx           
+│          └── AboutSection.jsx       
+├── public/
+│     └── Images/   
+│
+├── .env.local                 
+├── tailwind.config.js  
+├── postcss.config.js        
+├── next.config.js           
+├── package.json
+```
+    
+----
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📨 Contact Form Functionality
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The contact form sends form data to an API route (`/api/contact`) which:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Accepts a `POST` request.
+2. Parses the request body.
+3. Connects to **MongoDB Atlas**.
+4. Saves the message (`name`, `email`, `message`, `createdAt`) in the `contacts` collection.
+5. Returns a JSON response with success or error.
 
-## Learn More
+> 💡 All messages are saved securely in the MongoDB Atlas database you configure in `.env.local`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Test the Contact Form
+1. Fill out and submit the contact form on the site.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. The form data will be saved in your MongoDB Atlas contacts collection.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. You’ll see a success message on the frontend.
