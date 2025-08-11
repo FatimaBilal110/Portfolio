@@ -9,7 +9,7 @@ const AboutSection = () => {
         <div className="flex-shrink-0">
           <div className="rounded-full border-4 border-cyan-400 p-2">
             <Image
-              src="/Images/pfp.png" 
+              src="/Images/PFP.png" 
               alt="About me"
               width={300}
               height={300}

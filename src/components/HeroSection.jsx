@@ -37,7 +37,7 @@ const HeroSection = () => {
         <div className="relative md:w-1/2 flex justify-center items-center">
         
           <Image
-            src="/Images/pfp.png"
+            src="/Images/PFP.png"
             alt="Profile Picture"
             width={350}
             height={300}
