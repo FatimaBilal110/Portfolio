@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: ["Images/preview.png"], 
     type: "website",
   },
-  
+
   twitter: {
     card: "summary_large_image",
     title: "Fatima | Web Developer Portfolio",
@@ -45,6 +45,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+            <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Fatima",
+              url: "https://portfolio-gray-six-i0ldk2z83x.vercel.app/",
+              image:
+                "https://portfolio-gray-six-i0ldk2z83x.vercel.app/Images/preview.png",
+              sameAs: [
+                "https://github.com/FatimaBilal110"
+              ],
+              jobTitle: "Web Developer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Freelance",
+              },
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
