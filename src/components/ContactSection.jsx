@@ -31,10 +31,12 @@ const ContactSection = () => {
   };
    return (
     <section id="contact" className="flex justify-center items-center rounded-2xl min-h-screen bg-gray-600 p-6">
+
       <form
         className="bg-white/30 rounded-2xl shadow-lg p-8 w-full max-w-md space-y-6"
         onSubmit={onSubmit}
       >
+        
         <h2 className="text-2xl font-bold text-center text-gray-800">Contact Form</h2>
 
         {success && (
@@ -90,7 +92,7 @@ const ContactSection = () => {
         >
           SUBMIT
         </button>
-      </form>
+      </form>        
     </section>
   );
 };

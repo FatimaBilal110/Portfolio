@@ -35,15 +35,17 @@ const HeroSection = () => {
         </div>
 
         <div className="relative md:w-1/2 flex justify-center items-center">
+        
           <Image
             src="/Images/pfp.png"
             alt="Profile Picture"
             width={350}
             height={300}
-            className="border-4 border-cyan-400"
+            className="bg-yellow-600 border-4 border-cyan-400 rounded-2xl"
           />
+
           <div className="absolute md:top-4 md:right-10 top-[-20px] right-0 sm:right-5">
-  <div className="relative bg-gray-600 text-cyan-400 rounded-2xl text-center font-mono shadow-lg p-3 text-sm">
+  <div className="relative bg-gray-600 text-cyan-400 rounded-2xl border-3 border-yellow-600 text-center font-mono shadow-lg p-3 text-sm">
     Hey, there
     <div className="absolute -bottom-2 left-3 w-0 h-0 border-t-8 border-t-gray-600 border-r-8 border-r-transparent" />
   </div>

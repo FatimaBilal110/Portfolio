@@ -6,18 +6,20 @@ import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection"
 import SkillsSection from "@/components/SkillsSection"
 import ContactSection from "@/components/ContactSection"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
    <main className=" flex min-h-screen flex-col bg-black">
     <Navbar/>
-    <div className="container mx-auto px-10 py-4">
+    <div className="container mx-auto px-8 py-4">
       <HeroSection/>
       <AboutSection />
       <ServicesSection/>
       <SkillsSection/>
       <ContactSection/>
     </div>
+    <Footer/>
    </main>
   );
 }

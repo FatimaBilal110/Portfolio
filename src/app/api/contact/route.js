@@ -19,10 +19,12 @@ export async function POST(request) {
     });
 
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch (error) {
+  } 
+  catch (error) {
     console.error('Error saving to MongoDB:', error);
     return NextResponse.json({ success: false, error: 'Something went wrong.' }, { status: 500 });
-  } finally {
+  } 
+  finally {
     await client.close();
   }
 }
