@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://portfolio-gray-six-i0ldk2z83x.vercel.app/sitemap.xml
