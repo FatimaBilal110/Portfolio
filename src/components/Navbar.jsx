@@ -10,6 +10,7 @@ const Navbar = () => {
     { name: "Services", href: "#services", hover: "hover:text-purple-500" },
     { name: "Skills", href: "#skills", hover: "hover:text-cyan-400" },
     { name: "Contact", href: "#contact", hover: "hover:text-cyan-400" },
+    { name: "Blog", href: "/blog", hover: "hover:text-cyan-400" },
   ];
 
   return (
@@ -29,6 +30,7 @@ const Navbar = () => {
               >
                 {link.name}
               </Link>
+              
             </li>
           ))}
         </ul>
@@ -38,7 +40,6 @@ const Navbar = () => {
           className="md:hidden text-white focus:outline-none" >
             
           {isOpen ? (
-            // Close Icon
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
