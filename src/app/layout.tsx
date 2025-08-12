@@ -22,11 +22,9 @@ export const metadata: Metadata = {
     title: "Fatima | Web Developer Portfolio",
     description:
       "Showcasing my web development projects, UI/UX skills, and creative works.",
-    url: "https://portfolio-gray-six-i0ldk2z83x.vercel.app/",
+    url: "https://portfolio-gray-six-i0ldk2z83x.vercel.app/", 
     siteName: "Fatima Portfolio",
-    images: [
-      "https://portfolio-gray-six-i0ldk2z83x.vercel.app/Images/preview.png",
-    ],
+    images: ["https://portfolio-gray-six-i0ldk2z83x.vercel.app/Images/preview.png"], 
     type: "website",
   },
   twitter: {
@@ -34,24 +32,8 @@ export const metadata: Metadata = {
     title: "Fatima | Web Developer Portfolio",
     description:
       "Showcasing my web development projects, UI/UX skills, and creative works.",
-    images: [
-      "https://portfolio-gray-six-i0ldk2z83x.vercel.app/Images/preview.png",
-    ],
+    images: ["https://portfolio-gray-six-i0ldk2z83x.vercel.app/Images/preview.png"], 
   },
-};
-
-// JSON-LD schema data
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Fatima",
-  jobTitle: "Web Developer",
-  url: "https://portfolio-gray-six-i0ldk2z83x.vercel.app/",
-  image:
-    "https://portfolio-gray-six-i0ldk2z83x.vercel.app/Images/preview.png",
-  sameAs: ["https://github.com/FatimaBilal110"],
-  description:
-    "Personal portfolio of Fatima — showcasing web development, design, and creative projects built with Next.js and Tailwind CSS.",
 };
 
 export default function RootLayout({
@@ -61,13 +43,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
-
+      <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Fatima",
+              url: "https://portfolio-gray-six-i0ldk2z83x.vercel.app/",
+              image:
+                "https://portfolio-gray-six-i0ldk2z83x.vercel.app/Images/preview.png",
+              sameAs: [
+                "https://github.com/FatimaBilal110",
+              ],
+              jobTitle: "Web Developer",
+            }),
+          }}
         />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
       </body>
     </html>
   );
