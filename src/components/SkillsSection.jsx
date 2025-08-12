@@ -9,7 +9,7 @@ const SkillsSection = () => {
       <section id="skills" className="min-h-screen rounded-3xl bg-gray-900 text-white">
      <div className="container mx-auto">
     
-<h2 className="text-4xl text-cyan-400 font-extrabold text-center relative top-4">
+<h2 className="text-4xl text-cyan-400 font-extrabold text-center relative top-8">
   Skills
 </h2>
 

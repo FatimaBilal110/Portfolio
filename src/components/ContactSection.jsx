@@ -30,7 +30,7 @@ const ContactSection = () => {
     }
   };
    return (
-    <section id="contact" className="flex justify-center items-center rounded-2xl min-h-screen bg-gray-600 p-6">
+    <section id="contact" className="flex justify-center items-center rounded-2xl min-h-screen bg-gray-800 p-6">
 
       <form
         className="bg-white/30 rounded-2xl shadow-lg p-8 w-full max-w-md space-y-6"
