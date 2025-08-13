@@ -1,5 +1,7 @@
 export const dynamic = "force-dynamic";
 import { MongoClient } from "mongodb";
+import Link from "next/link";
+
 
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
@@ -40,12 +42,9 @@ const BlogPage = async ({ searchParams }) => {
                 className="w-32 h-32 object-cover rounded-lg shadow"
               />
               <div>
-                <a
-                  href={`/blog/${blog._id}`}
-                  className="text-blue-600 hover:underline text-lg font-semibold"
-                >
-                  {blog.title}
-                </a>
+                <Link href={`/blog/${blog._id}`} className="text-blue-600 hover:underline text-lg font-semibold">
+                {blog.title}
+                </Link>
                 <p className="text-gray-600 mt-1">
                   {blog.summary || blog.content.substring(0, 100) + "..."}
                 </p>
@@ -54,28 +53,23 @@ const BlogPage = async ({ searchParams }) => {
           ))}
         </ul>
 
-        {/* Pagination Links */}
-        <div className="flex justify-center items-center mt-6 space-x-4">
-          <a
-            href={`/blog?page=${page - 1}`}
-            className={`px-4 py-2 bg-gray-200 rounded ${
-              page <= 1 ? "opacity-50 pointer-events-none" : ""
-            }`}
-          >
-            Prev
-          </a>
-          <span>
-            Page {page} of {totalPages}
-          </span>
-          <a
+  <div className="flex justify-center items-center mt-6 space-x-4">
+         <Link
+           href={`/blog?page=${page - 1}`}
+           className={`px-4 py-2 bg-gray-200 rounded ${page <= 1 ? "opacity-50 pointer-events-none" : ""}`}
+         >
+           Prev
+         </Link>
+  <span>
+    Page {page} of {totalPages}
+  </span>
+          <Link
             href={`/blog?page=${page + 1}`}
-            className={`px-4 py-2 bg-gray-200 rounded ${
-              page >= totalPages ? "opacity-50 pointer-events-none" : ""
-            }`}
+            className={`px-4 py-2 bg-gray-200 rounded ${page >= totalPages ? "opacity-50 pointer-events-none" : ""}`}
           >
-            Next
-          </a>
-        </div>
+           Next
+          </Link>
+</div>
       </main>
     );
   } catch (error) {
