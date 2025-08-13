@@ -4,12 +4,26 @@ import { MongoClient } from "mongodb";
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
-const BlogPage = async () => {
+const BlogPage = async ({ searchParams }) => {
+  const page = parseInt(searchParams?.page) || 1;
+  const limit = 5;
+  const skip = (page - 1) * limit;
+
   try {
     await client.connect();
     const db = client.db();
     const collection = db.collection("blogs");
-    const blogs = await collection.find({}).toArray();
+
+ 
+    const blogs = await collection
+      .find({})
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .toArray();
+
+    const totalBlogs = await collection.countDocuments();
+    const totalPages = Math.ceil(totalBlogs / limit);
 
     return (
       <main className="max-w-5xl mx-auto p-4">
@@ -21,9 +35,7 @@ const BlogPage = async () => {
               className="mb-6 pb-4 border-b flex flex-row items-start space-x-4"
             >
               <img
-                src={
-                  blog.imageUrl || `/Images/image.png"`
-                }
+                src={blog.imageUrl || `/Images/image.png`}
                 alt={blog.title}
                 className="w-32 h-32 object-cover rounded-lg shadow"
               />
@@ -41,6 +53,29 @@ const BlogPage = async () => {
             </li>
           ))}
         </ul>
+
+        {/* Pagination Links */}
+        <div className="flex justify-center items-center mt-6 space-x-4">
+          <a
+            href={`/blog?page=${page - 1}`}
+            className={`px-4 py-2 bg-gray-200 rounded ${
+              page <= 1 ? "opacity-50 pointer-events-none" : ""
+            }`}
+          >
+            Prev
+          </a>
+          <span>
+            Page {page} of {totalPages}
+          </span>
+          <a
+            href={`/blog?page=${page + 1}`}
+            className={`px-4 py-2 bg-gray-200 rounded ${
+              page >= totalPages ? "opacity-50 pointer-events-none" : ""
+            }`}
+          >
+            Next
+          </a>
+        </div>
       </main>
     );
   } catch (error) {
