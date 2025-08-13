@@ -6,4 +6,10 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+  <loc>https://portfolio-gray-six-i0ldk2z83x.vercel.app/blog</loc>
+  <lastmod>2025-08-13</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+</url>
 </urlset>
