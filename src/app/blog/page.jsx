@@ -29,7 +29,7 @@ const BlogPage = async ({ searchParams }) => {
 
     return (
       <main className="max-w-5xl mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-6">Blog List</h1>
+        <h1 className="text-3xl font-bold mb-6">BLOGS </h1>
         <ul>
           {blogs.map((blog) => (
             <li
