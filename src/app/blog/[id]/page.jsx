@@ -4,7 +4,7 @@ const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 const BlogViewPage = async ({ params }) => {
-  const { id } = params;
+  const {id} = params;
 
   try {
     await client.connect();
