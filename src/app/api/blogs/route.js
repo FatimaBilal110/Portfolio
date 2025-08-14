@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import { MongoClient } from "mongodb";
-
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
+import clientPromise from "@/lib/db"; // our pooled Mongo connection
 
 export async function GET(request) {
   try {
@@ -11,17 +8,19 @@ export async function GET(request) {
     const limit = parseInt(url.searchParams.get("limit")) || 5;
     const skip = (page - 1) * limit;
 
-    await client.connect();
-    const db = client.db();
+    const client = await clientPromise;
+    const db = client.db(process.env.MONGODB_DB_NAME); // from .env.local
     const collection = db.collection("blogs");
 
-    const blogs = await collection
-      .find({})
+    // Only fetch fields you need for listing
+    const cursor = collection
+      .find({}, { projection: { title: 1, author: 1, createdAt: 1, image: 1 } })
       .sort({ createdAt: -1 })
       .skip(skip)
-      .limit(limit)
-      .toArray();
+      .limit(limit);
 
+    const docs = await cursor.toArray();
+    const blogs = docs.map(b => ({ ...b, _id: b._id.toString() }));
     const totalBlogs = await collection.countDocuments();
     const totalPages = Math.ceil(totalBlogs / limit);
 
@@ -37,7 +36,5 @@ export async function GET(request) {
       { error: "Something went wrong." },
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }

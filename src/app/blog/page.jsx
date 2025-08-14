@@ -1,31 +1,19 @@
-import { MongoClient } from "mongodb";
+import clientPromise from "@/lib/db";
 import Link from "next/link";
 
-const uri = process.env.MONGODB_URI;
-
-// Global cached client to persist across serverless invocations
-let cachedClient = global.mongoClient;
-
-if (!cachedClient) {
-  cachedClient = new MongoClient(uri);
-  global.mongoClient = cachedClient;
-}
-
-const BlogPage = async ({ searchParams }) => {
-    const sp = await searchParams;
-  const page = parseInt(sp?.page) || 1;
+export default async function BlogPage({ searchParams }) {
+  const params = await searchParams
+  const page = parseInt(params?.page) || 1;
   const limit = 5;
   const skip = (page - 1) * limit;
 
   try {
-    if (!cachedClient.isConnected?.()) {
-      await cachedClient.connect();
-    }
-    const db = cachedClient.db();
+    const client = await clientPromise;
+    const db = client.db(process.env.MONGODB_DB_NAME);
     const collection = db.collection("blogs");
 
     const blogs = await collection
-      .find({})
+      .find({}, { projection: { title: 1, summary: 1, content: 1, imageUrl: 1, createdAt: 1 } })
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
@@ -35,9 +23,9 @@ const BlogPage = async ({ searchParams }) => {
     const totalPages = Math.ceil(totalBlogs / limit);
 
     return (
-      <main className="max-w-5xl mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-6">BLOGS</h1>
-        <ul>
+      <main className="max-w-5xl mx-auto bg-slate-300 p-10">
+        <h1 className="text-3xl font-bold text-pink-500 text-center mt-6 mb-6">BLOGS</h1>
+        <ul >
           {blogs.map((blog) => (
             <li
               key={blog._id.toString()}
@@ -51,12 +39,12 @@ const BlogPage = async ({ searchParams }) => {
               <div>
                 <Link
                   href={`/blog/${blog._id}`}
-                  className="text-blue-600 hover:underline text-lg font-semibold"
+                  className="text-blue-800 hover:underline text-lg font-semibold"
                 >
                   {blog.title}
                 </Link>
                 <p className="text-gray-600 mt-1">
-                  {blog.summary || blog.content.substring(0, 100) + "..."}
+                  {blog.summary || (blog.content?.substring(0, 100) || "") + "..."}
                 </p>
               </div>
             </li>
@@ -66,7 +54,7 @@ const BlogPage = async ({ searchParams }) => {
         <div className="flex justify-center items-center mt-6 space-x-4">
           <Link
             href={`/blog?page=${page - 1}`}
-            className={`px-4 py-2 bg-gray-200 rounded ${
+            className={`px-4 py-2 bg-green-500 rounded ${
               page <= 1 ? "opacity-50 pointer-events-none" : ""
             }`}
           >
@@ -77,7 +65,7 @@ const BlogPage = async ({ searchParams }) => {
           </span>
           <Link
             href={`/blog?page=${page + 1}`}
-            className={`px-4 py-2 bg-gray-200 rounded ${
+            className={`px-4 py-2 bg-green-500 rounded ${
               page >= totalPages ? "opacity-50 pointer-events-none" : ""
             }`}
           >
@@ -87,8 +75,7 @@ const BlogPage = async ({ searchParams }) => {
       </main>
     );
   } catch (error) {
+    console.error("Error loading blogs:", error);
     return <p>Error loading blogs: {error.message}</p>;
   }
-};
-
-export default BlogPage;
+}

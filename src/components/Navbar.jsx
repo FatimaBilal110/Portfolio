@@ -6,10 +6,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { name: "About", href: "#about", hover: "hover:text-green-800" },
-    { name: "Services", href: "#services", hover: "hover:text-purple-500" },
-    { name: "Skills", href: "#skills", hover: "hover:text-cyan-400" },
-    { name: "Contact", href: "#contact", hover: "hover:text-cyan-400" },
+    { name: "About", href: "/#about", hover: "hover:text-green-800" },
+    { name: "Services", href: "/#services", hover: "hover:text-purple-500" },
+    { name: "Skills", href: "#/skills", hover: "hover:text-cyan-400" },
+    { name: "Contact", href: "/#contact", hover: "hover:text-cyan-400" },
     { name: "Blog", href: "/blog", hover: "hover:text-cyan-400" },
   ];
 
@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-gray-400/80 shadow-md z-50">
       <div className="flex items-center justify-between mx-auto p-5 max-w-7xl">
 
-        <Link href={"#hero"} className="text-4xl text-white font-serif">
+        <Link href={"/#hero"} className="text-4xl text-white font-serif">
           Fatima.
         </Link>
 

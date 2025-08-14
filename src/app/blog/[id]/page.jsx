@@ -1,20 +1,23 @@
-import { MongoClient, ObjectId } from "mongodb";
+import clientPromise from "@/lib/db";
+import { ObjectId } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
-
-const BlogViewPage = async ({ params }) => {
-  const {id} = params;
-
+export default async function BlogViewPage({ params }) {
   try {
-    await client.connect();
-    const db = client.db();
-    const collection = db.collection("blogs");
+    const resolvedParams = await params; 
+    const { id } = resolvedParams;
+ 
+    if (!ObjectId.isValid(id)) {
+      return <p className="text-center mt-10">Invalid blog ID</p>;
+    }
 
-    const blog = await collection.findOne({ _id: new ObjectId(id) });
+    const client = await clientPromise;
+    const db = client.db(process.env.MONGODB_DB_NAME);
+    const blog = await db
+      .collection("blogs")
+      .findOne({ _id: new ObjectId(id) });
 
     if (!blog) {
-      return <p>Blog not found</p>;
+      return <p className="text-center mt-10">Blog not found</p>;
     }
 
     return (
@@ -26,10 +29,7 @@ const BlogViewPage = async ({ params }) => {
       </main>
     );
   } catch (error) {
-    return <p>Error loading blog: {error.message}</p>;
-  } finally {
-    await client.close();
+    console.error("Error loading blog:", error);
+    return <p className="text-center mt-10">Error loading blog</p>;
   }
-};
-
-export default BlogViewPage;
+}
