@@ -31,22 +31,24 @@ export default async function BlogPage({ searchParams }) {
               key={blog._id.toString()}
               className="mb-6 pb-4 border-b flex flex-row items-start space-x-4"
             >
+      <Link
+        href={`/blog/${blog._id}`}
+        className="flex flex-row items-start space-x-4 hover:bg-gray-200 p-2 rounded transition"
+      >
               <img
                 src={blog.imageUrl || `/Images/image.png`}
                 alt={blog.title}
                 className="w-32 h-32 object-cover rounded-lg shadow"
               />
               <div>
-                <Link
-                  href={`/blog/${blog._id}`}
-                  className="text-blue-800 hover:underline text-lg font-semibold"
-                >
-                  {blog.title}
-                </Link>
+                <h2 className="text-blue-800 hover:underline text-lg font-semibold">
+            {blog.title}
+          </h2>
                 <p className="text-gray-600 mt-1">
                   {blog.summary || (blog.content?.substring(0, 100) || "") + "..."}
                 </p>
               </div>
+        </Link>
             </li>
           ))}
         </ul>

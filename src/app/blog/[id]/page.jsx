@@ -22,7 +22,7 @@ export default async function BlogViewPage({ params }) {
 
     return (
       <main className="max-w-4xl mx-auto p-4">
-        <h1 className="text-4xl font-bold mb-6">{blog.title}</h1>
+        <h1 className="text-4xl font-bold mt-14 mb-6">{blog.title}</h1>
         <article className="prose prose-lg">
           <div dangerouslySetInnerHTML={{ __html: blog.content }} />
         </article>
