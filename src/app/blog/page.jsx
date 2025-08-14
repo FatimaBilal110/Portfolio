@@ -24,7 +24,7 @@ export default async function BlogPage({ searchParams }) {
 
     return (
       <main className="max-w-5xl mx-auto bg-slate-300 p-10">
-        <h1 className="text-3xl font-bold text-pink-500 text-center mt-6 mb-6">BLOGS</h1>
+        <h1 className="text-3xl font-bold text-pink-500 text-center mt-9 mb-6">BLOGS</h1>
         <ul >
           {blogs.map((blog) => (
             <li
@@ -33,14 +33,14 @@ export default async function BlogPage({ searchParams }) {
             >
       <Link
         href={`/blog/${blog._id}`}
-        className="flex flex-row items-start space-x-4 hover:bg-gray-200 p-2 rounded transition"
+        className="block md:flex md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4 p-2 rounded hover:bg-gray-200 transition shadow-sm"
       >
               <img
                 src={blog.imageUrl || `/Images/image.png`}
                 alt={blog.title}
-                className="w-32 h-32 object-cover rounded-lg shadow"
+                className="w-full md:w-32 h-32 object-cover rounded-lg shadow"
               />
-              <div>
+              <div className="flex-1">
                 <h2 className="text-blue-800 hover:underline text-lg font-semibold">
             {blog.title}
           </h2>
