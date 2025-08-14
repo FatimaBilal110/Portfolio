@@ -9,7 +9,7 @@ const Navbar = () => {
     { name: "About", href: "/#about", hover: "hover:text-green-800" },
     { name: "Services", href: "/#services", hover: "hover:text-purple-500" },
     { name: "Skills", href: "#/skills", hover: "hover:text-cyan-400" },
-    { name: "Contact", href: "/#contact", hover: "hover:text-cyan-400" },
+    { name: "Contact", href: "/#contact", hover: "hover:text-purple-500" },
     { name: "Blog", href: "/blog", hover: "hover:text-cyan-400" },
   ];
 
