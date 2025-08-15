@@ -6,9 +6,52 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
   <loc>https://portfolio-gray-six-i0ldk2z83x.vercel.app/blog</loc>
   <lastmod>2025-08-13</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+</url>
+
+ <url>
+  <loc>https://portfolio-gray-six-i0ldk2z83x.vercel.app/blog/seamless-ai-integration</loc>
+  <lastmod>2025-08-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+</url>
+
+ <url>
+  <loc>https://portfolio-gray-six-i0ldk2z83x.vercel.app/blog/Top-Software-Development-Trends-Shaping-the-Future-of-IT-in-2025</loc>
+  <lastmod>2025-08-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+</url>
+
+ <url>
+  <loc>https://portfolio-gray-six-i0ldk2z83x.vercel.app/blog/how-ai-is-revolutionizing-the-fashion-industry</loc>
+  <lastmod>2025-08-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+</url>
+
+ <url>
+  <loc>https://portfolio-gray-six-i0ldk2z83x.vercel.app/blog/How-AI-is-Transforming-Healthcare-in-2025</loc>
+  <lastmod>2025-08-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+</url>
+
+ <url>
+  <loc>https://portfolio-gray-six-i0ldk2z83x.vercel.app/blog/The-Rise-of-Green-Technology-in-2025</loc>
+  <lastmod>2025-08-15</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+</url>
+
+ <url>
+  <loc>https://portfolio-gray-six-i0ldk2z83x.vercel.app/blog/Pakistan-Independence-Day-2025-From-Freedom-to-Digital-Power</loc>
+  <lastmod>2025-08-15</lastmod>
   <changefreq>monthly</changefreq>
   <priority>1.0</priority>
 </url>

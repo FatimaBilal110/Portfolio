@@ -13,7 +13,7 @@ export default async function BlogPage({ searchParams }) {
     const collection = db.collection("blogs");
 
     const blogs = await collection
-      .find({}, { projection: { title: 1, summary: 1, content: 1, imageUrl: 1, createdAt: 1 } })
+      .find({}, { projection: { title: 1, summary: 1, content: 1, imageUrl: 1, createdAt: 1, slug:1 } })
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
@@ -32,7 +32,7 @@ export default async function BlogPage({ searchParams }) {
               className="mb-6 pb-4 border-b flex flex-row items-start space-x-4"
             >
       <Link
-        href={`/blog/${blog._id}`}
+        href={`/blog/${blog.slug}`}
         className="block md:flex md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4 p-2 rounded hover:bg-gray-200 transition shadow-sm"
       >
               <img

@@ -1,20 +1,20 @@
 import clientPromise from "@/lib/db";
-import { ObjectId } from "mongodb";
+
 
 export default async function BlogViewPage({ params }) {
   try {
     const resolvedParams = await params; 
-    const { id } = resolvedParams;
+    const { slug} = resolvedParams;
  
-    if (!ObjectId.isValid(id)) {
-      return <p className="text-center mt-10">Invalid blog ID</p>;
+    if (!slug) {
+      return <p className="text-center mt-10">Invalid blog slug</p>;
     }
 
     const client = await clientPromise;
     const db = client.db(process.env.MONGODB_DB_NAME);
     const blog = await db
       .collection("blogs")
-      .findOne({ _id: new ObjectId(id) });
+      .findOne({slug});
 
     if (!blog) {
       return <p className="text-center mt-10">Blog not found</p>;

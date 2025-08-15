@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import clientPromise from "@/lib/db"; // our pooled Mongo connection
+import clientPromise from "@/lib/db";
 
 export async function GET(request) {
   try {
@@ -9,12 +9,11 @@ export async function GET(request) {
     const skip = (page - 1) * limit;
 
     const client = await clientPromise;
-    const db = client.db(process.env.MONGODB_DB_NAME); // from .env.local
+    const db = client.db(process.env.MONGODB_DB_NAME);
     const collection = db.collection("blogs");
 
-    // Only fetch fields you need for listing
     const cursor = collection
-      .find({}, { projection: { title: 1, author: 1, createdAt: 1, image: 1 } })
+      .find({}, { projection: { title: 1, author: 1, createdAt: 1, image: 1, slug:1 } })
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);
