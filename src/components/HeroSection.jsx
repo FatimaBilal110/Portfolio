@@ -15,7 +15,7 @@ const HeroSection = () => {
       <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8 w-full max-w-6xl">
         <div className="text-white text-center md:text-left md:w-1/2 space-y-6 p-7">
           <h1 className="text-4xl sm:text-5xl font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-green-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-green-500 hover:from-green-500 hover:to-purple-500">
               I'm <br /> FATIMA BILAL
             </span>
           </h1>

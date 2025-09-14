@@ -17,8 +17,9 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-gray-400/80 shadow-md z-50">
       <div className="flex items-center justify-between mx-auto p-5 max-w-7xl">
 
-        <Link href={"/#hero"} className="text-4xl text-white font-serif">
+        <Link href={"/#hero"} className="text-4xl text-white font-serif hover:text-cyan-700">
           Fatima.
+          
         </Link>
 
         <ul className="hidden md:flex gap-6">
@@ -75,7 +76,7 @@ const Navbar = () => {
 
       {isOpen && (
         <div className="md:hidden bg-gray-400/90 shadow-lg border-t border-gray-300">
-          <ul className="flex flex-col p-4 space-y-2">
+          <ul className="flex flex-col p-4 space-y-2 ">
             {links.map((link) => (
               <li key={link.name}>
                 <Link
